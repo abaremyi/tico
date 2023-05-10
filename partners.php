@@ -47,10 +47,28 @@
     </div> 
                 
     <!-- End Found in  -->
+    <div class="container-fluid">
+      <div class="container">
+        <h2 >Our  Partners</h2>
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10">
+            <section class="customer-logos slider">
+               <div class="slide"><img src="img/logo_2.jpg"></div>
+               <div class="slide"><img src="img/logo_3.png"></div>
+               <div class="slide"><img src="img/logo_4.png"></div>
+               <div class="slide"><img src="img/logo_5.png"></div>
+               <div class="slide"><img src="img/logo_6.png"></div>
+            </section>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+         
+      </div>
+    </div>
 
-
-    <!-- Why TICO Start -->
-    <div class="container-fluid py-2">
+    <!-- TICO Partners Description Start -->
+    <!-- <div class="container-fluid py-2">
         <div class="container py-3">
             <div class="row align-items-center">
                 <div class="col-lg-5" style="display:flex;justify-content: center;height:160px; ">
@@ -161,8 +179,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Why TICO End -->
+    </div> -->
+    <!-- TICO Partners Description End -->
 
 
 
@@ -187,6 +205,13 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- Added partners carousel slider -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+      <script src="js/slick.js"></script>
+
+      <script src="js/custom.js"></script>
+      
 </body>
 
 </html>
