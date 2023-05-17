@@ -56,7 +56,7 @@
                                 <a href="" class="dropdown-item">jQuery</a>
                             </div>
                         </div> -->
-                        <a href="about.php" class="nav-item nav-link">About</a>
+                        <a href="about.php" class="nav-item nav-link">Who We Are</a>
                         <a href="#" class="nav-item nav-link">Our Team</a>
                         <a href="partners.php" class="nav-item nav-link">Our Partners</a>
                     </div>
@@ -76,16 +76,17 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Our Programs</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="programHumanRight.php" class="dropdown-item">Human Rights Programs</a>
-                                    <a href="programCommunity.php" class="dropdown-item">Community Health Programs</a>
+                                    <a href="programHumanRight.php" class="dropdown-item">Empowering Youth Through Human Rights and Advocacy</a>
+                                    <a href="programCommunity.php" class="dropdown-item">Enhancing Youth Health and Well-being</a>
+                                    <a href="programEnvironment.php" class="dropdown-item">Promoting Youth Development and Environmental Sustainability</a>
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Get Involved</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="membership.php" class="dropdown-item">Membership</a>
+                                    <a href="applications.php" class="dropdown-item">Applications</a>
                                     <a href="volunteer.php" class="dropdown-item">Volunteer</a>
-                                    <a href="internship.php" class="dropdown-item">Apply for Internship</a>
+                                    <!-- <a href="internship.php" class="dropdown-item">Apply for Internship</a> -->
                                     <a href="#" class="dropdown-item">Donate</a>
                                 </div>
                             </div>
@@ -93,13 +94,14 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Publications</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="#" class="dropdown-item">News</a>
-                                    <a href="#" class="dropdown-item">Photo Gallery</a>
+                                    <a href="photoGallery.php" class="dropdown-item">Photo Gallery</a>
                                     <a href="#" class="dropdown-item">Video Gallery</a>
                                 </div>
                             </div>
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
                         </div>
                         <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="#">Donate</a>
+                        <!-- <a class="btn btn-danger py-2 px-4 ml-auto d-none d-lg-block" href="#"><i class="fa fa-cog text-white"></i></a> -->
                     </div>
                 </nav>
             </div>

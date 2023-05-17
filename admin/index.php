@@ -1,3 +1,9 @@
+<?php 
+include('../config/db.php');
+
+if($_SESSION['admin']){ 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -264,3 +270,8 @@
 </body>
 
 </html>
+<?php 
+}else{
+	header('Location: logout.php');
+	} 
+	?>

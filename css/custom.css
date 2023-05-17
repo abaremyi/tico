@@ -56,10 +56,16 @@
 .single-logo-wrapper:hover {
 	opacity: 1;
 }
-/* Slick Slider Carouser Partners Carousel */
-
 /* Slider */
+.photoHeight{
+    height: 200px;
+}
+.photoHeight img{
+    height: 100%;
+    width: 100%;
+}
 
+/* Slick Slider Carouser Partners Carousel */
 .slick-slide {
     margin: 0px 20px;
 }

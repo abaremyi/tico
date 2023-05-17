@@ -7,6 +7,9 @@
     <meta name="author" content="">
 
     <title>TICO - Dashboard</title>
+    
+    <!-- Favicon -->
+    <link href="../img/logo.png" rel="icon">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -16,5 +19,6 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
 </head>
