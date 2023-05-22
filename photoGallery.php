@@ -12,8 +12,131 @@ include("config/db.php");
     <!-- Topbar Start -->
     <?php include_once("includes/navbar.php");?>
     <!-- Navbar End -->
+    <!-- insert Gallery CSS Here -->
+    <style>
+        body {
+        height: 100vh;
+        width: 100vw;
+        /* padding: 20px;
+        background-color: #121212; */
+        position: relative;
+        /* overflow: hidden; */
+        }
 
+        #grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-auto-rows: 350px;
+        gap: 5px;
+        height: 100vh;
+        overflow-y: scroll;
+        padding-right: 10px;
+        grid-auto-flow: dense;
+        }
 
+        #grid::-webkit-scrollbar {
+        background-color: #dedede;
+        width: 10px;
+        }
+
+        #grid::-webkit-scrollbar-thumb {
+        background-color: #757575;
+        }
+
+        .grid-item {
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        }
+
+        #nature-2,
+        #nature-7,
+        #nature-16 {
+        grid-column: span 2;
+        }
+
+        #nature-4,
+        #nature-5,
+        #nature-10 {
+        grid-row: span 2;
+        }
+
+        #nature-13 {
+        grid-column: span 2;
+        grid-row: span 2;
+        }
+
+        .grid-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.2s ease;
+        }
+
+        .grid-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        z-index: 2; /*bug correction */
+        }
+
+        .grid-img:hover {
+        transform: scale(1.2);
+        }
+
+        #popup-bg {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 83.3vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 3;
+        justify-content: center;
+        align-items: center;
+        }
+
+        #popup-bg.active {
+        display: flex;
+        }
+
+        #popup-content {
+        max-width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        }
+
+        #popup-img {
+        width: 100%;
+        /* height: auto; */
+        height: 600px;
+        }
+
+        #popup-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        }
+
+        #popup-close:hover {
+        background-color: orange;
+        }
+    </style>
+    <!-- End Gallery CSS  -->
     <!-- Header Start -->
     <div class="container-fluid page-header" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/Gallely-1.jpg) no-repeat center center; background-size:cover">
         <div class="container">
@@ -37,32 +160,42 @@ include("config/db.php");
                 <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">TICO Gallery</h5>
                 <!-- <h1>Meet Our Teachers</h1> -->
             </div>
-            <div class="row">
-                <?php 
-                        $sql = "SELECT * FROM gallery";
-                        $photo = $db->prepare($sql);
-                        $photo->execute();
-                        while($res = $photo->fetch()){ 
-                        ?>
-                <div class="col-md-6 col-lg-3 text-center team mb-4">
-                    <div class="team-item rounded overflow-hidden mb-2">
-                        <div class="team-img position-relative" style="height:200px;">
-                            <img class="img-fluid" src="img/<?= ($res['photo'])? $res['photo'] :'profile.png' ?>" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <!-- <div class="bg-secondary p-4">
-                            <h5>Jhon Doe</h5>
-                            <p class="m-0">Web Designer</p>
-                        </div> -->
-                    </div>
+                <div class="row">
+                <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- <h1 class="gallery-title">Gallery</h1> -->
+                    <div align="center" class=" mb-3">
+                        <button class="btn btn-default filter-button" data-filter="all">All</button>
+                        <button class="btn btn-default filter-button" data-filter="Event">Event</button>
+                        <button class="btn btn-default filter-button" data-filter="Internship">Internship</button>
+                        <button class="btn btn-default filter-button" data-filter="Training">Training</button>
+                        <button class="btn btn-default filter-button" data-filter="Workshop">Workshop</button>
+                    </div><hr/>
                 </div>
-                <?php } ?>
-                
-            </div>
+                <div class="gallery col-md-12 col-sm-12 col-xs-12">
+                    <div id="popup-bg">
+                        <div id="popup-content">
+                            <div id="popup-close">
+                            <ion-icon name="close-circle"></ion-icon>
+                            </div>
+                            <img id="popup-img" src="#" alt="" />
+                        </div>
+                    </div>
+                    <div id="grid">
+                        <?php 
+                            $sql = "SELECT * FROM gallery";
+                            $photo = $db->prepare($sql);
+                            $photo->execute();
+                            while($res = $photo->fetch()){ 
+                        ?>
+                        <div class="grid-item filter <?=$res['category']?>" id="<?=$res['photo']?>">
+                            <img src="img/<?= ($res['photo'])? $res['photo'] :'avatar-gallery.png' ?>" alt="" class="grid-img" />
+                        </div>
+                        <?php } ?>
+                    </div>
+
+                </div>
+        </section>
+
         </div>
     </div>
     <!-- Team End -->
@@ -85,10 +218,47 @@ include("config/db.php");
 
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
+    
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script>
+        $(document).ready(function(){
+
+            $(".filter-button").click(function(){
+                var value = $(this).attr('data-filter');
+                
+                if(value == "all")
+                {
+                    //$('.filter').removeClass('hidden');
+                    $('.filter').show('1000');
+                }
+                else
+                {
+            //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+            //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+                    $(".filter").not('.'+value).hide('3000');
+                    $('.filter').filter('.'+value).show('3000');
+                    
+                }
+            });
+
+            if ($(".filter-button").removeClass("active")) {
+            $(this).removeClass("active");
+            }
+            $(this).addClass("active");
+
+            });
+    </script>
+
 </body>
 
 </html>

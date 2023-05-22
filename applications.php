@@ -37,43 +37,10 @@ include("config/db.php");
                 <h4 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">TICO Call up Application</h4>
                 <!-- <h1>Meet Our Teachers</h1> -->
             </div>
-            <div class="row">
-                <?php 
-                        $sql = "SELECT * FROM applications WHERE title!= ''";
-                        $applications = $db->prepare($sql);
-                        $applications->execute();
-                        while($res = $applications->fetch()){ 
-                          // convert date
-                          $evdate = strtotime($res['deadline']);
-                          $dateDetails= date("d/M/Y", $evdate);
-                          $ifotosrc='';
-                          if($res['photo']){
-                            $ifotosrc='img/'.$res['photo'];
-                          } elseif ($res['url']) {
-                            $ifotosrc=$res['url'];
-                          }else {
-                            $ifotosrc='img/applicationIllustration.jpg';
-                          }
-                        ?>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="rounded overflow-hidden mb-2">
-                        <img class="img-fluid" src="<?= $ifotosrc ?>" alt="ApplicationIllustrationImg">
-                        <div class="bg-secondary p-4">
-                            <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-shapes text-primary mr-2"></i><?= $res['category'] ?></small>
-                                <small class="m-0"><i class="far fa-calendar text-primary mr-2"></i><?= $dateDetails ?></small>
-                            </div>
-                            <a class="h5" href="#"><?= $res['title'] ?></a>
-                            <div class="border-top mt-4 pt-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="m-0"><a href="<?= ($res['googleForm'])? $res['googleForm'] :'#' ?>" class="btn btn-sm btn-primary py-2 px-4 ml-auto  d-lg-block">Apply</a></h6>
-                                    <h6 class="m-0 text-success"><small> <?= $res['status'] ?></small></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php } ?>
+            <div class="row" id="pagination-data">
+              <!-- Start News Data Details -->
+
+              <!-- End News Data Details -->
             </div>
         </div>
     </div>
@@ -101,6 +68,31 @@ include("config/db.php");
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+<!-- pagination script -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        function loadData(page){
+          $.ajax({
+            url  : "applicationPagination.php",
+            type : "POST",
+            cache: false,
+            data : {page_no:page},
+            success:function(response){
+              $("#pagination-data").html(response);
+            }
+          });
+        }
+        loadData();
+        
+        // Pagination code
+        $(document).on("click", ".pagination li a", function(e){
+          e.preventDefault();
+          var pageId = $(this).attr("id");
+          loadData(pageId);
+        });
+      });
+    </script>
 </body>
 
 </html>

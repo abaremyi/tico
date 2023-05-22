@@ -24,7 +24,7 @@ include("config/db.php");
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active" style="min-height: 300px;">
-                    <img class="position-relative w-100" src="img/carousel-1b.JPG" style="min-height: 300px; object-fit: cover;">
+                    <img class="position-relative w-100" src="img/carousel-1.jpeg" style="min-height: 300px; object-fit: cover;">
                     <div class="carousel-caption d-flex align-items-center justify-content-center">
                         <div class="p-5" style="width: 100%; max-width: 900px;">
                             <h5 class="text-white mb-md-3">TICO (Thriving Inclusive Community Organization)</h5>
@@ -65,7 +65,7 @@ include("config/db.php");
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <img class="img-fluid rounded mb-4 mb-lg-0" src="img/about2.JPG" alt="">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="img/carousel-1.jpeg" alt="">
                 </div>
                 <div class="col-lg-7">
                     <div class="text-left mb-4">

@@ -225,7 +225,7 @@ if($_SESSION['admin']){
 																							<th>Title</th>
 																							<th>Date</th>
 																							<th>Photo URL</th>
-																							<th>status</th>
+																							<th style="width:25%">status</th>
 																							<th>Actions</th>
 																					</tr>
 																			</thead>
@@ -252,17 +252,23 @@ if($_SESSION['admin']){
 																				?>
 																						
 																						<tr>
-																								<td><?= $i ?></td>
-																								<td>
+																								<td style="width:5%"><?= $i ?></td>
+																								<td style="width:20%">
 																									<img class="rounded-circle img-responsive mt-2" src='<?= $image ?>' height='40px' width='40px'>
 																									<div class="btn-group btn-group-sm mt-2">
 																										<button class="btn photo btn-pill btn-outline-primary btn-sm" type='button' data-id="<?=$res['newsid']?>"><i class="fas fa-upload"></i></button>
 																									</div>
 																								</td>
-																								<td style="width:15%"> <small> <?= $res['title'] ?></small></td>
-																								<td style="width:10%"><small><?= $finalDate ?></small></td>
-																								<td style="width:100px"><small  class="text-wrap"><?= $res['url'] ?></small></td>
-																								<td class="small d-flex align-items-center justify-content-center">
+																								<td style="width:30%"> <small> <?= $res['title'] ?></small></td>
+																								<td style="width:15%"><small><?= $finalDate ?></small></td>
+																								<td style="width:10%">
+																									<?php if ($res['url']) {
+																									?>
+																										<button type="button" class="btn btn-pill btn-outline-info btn-sm" data-toggle="popover" title="<?= $res['title'] ?>" data-content="<?= $res['url'] ?>">Click me</button>
+																									<?php } ?>
+																								</td>
+																							
+																								<td style="text-align:center;" class="">
 																									<?php
 																										if($res['status'] == 'Recent'){?>
 																											<a class='btn btn-sm btn-primary' href="#">
@@ -543,6 +549,10 @@ if($_SESSION['admin']){
 			}
 
 			}
+
+			$(function () {
+				$('[data-toggle="popover"]').popover()
+			})
 		</script>
 
 </body>
