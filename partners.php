@@ -1,3 +1,8 @@
+<?php 
+include("config/db.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +15,7 @@
 
 
     <!-- Header Start -->
-    <div class="container-fluid page-header" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/aboutWelcome.jpg), no-repeat center center!important;">
+    <div class="container-fluid page-header" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://img.freepik.com/free-vector/gradient-background-wave-minimalist-style-design_483537-3860.jpg?w=826&t=st=1684611536~exp=1684612136~hmac=5f53639d4512cf0dbc9562d2d5d540980f65710a7920802969050f90867d0f6a), no-repeat center center; background-size:cover;">
         <div class="container">
             <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
                 <h3 class="display-4 text-white text-uppercase">Our Partners</h3>
@@ -54,11 +59,18 @@
           <div class="col-lg-1"></div>
           <div class="col-lg-10">
             <section class="customer-logos slider">
-               <div class="slide"><img src="img/logo_2.jpg"></div>
-               <div class="slide"><img src="img/logo_3.png"></div>
-               <div class="slide"><img src="img/logo_4.png"></div>
-               <div class="slide"><img src="img/logo_5.png"></div>
-               <div class="slide"><img src="img/logo_6.png"></div>
+                <?php 
+                    $sql = "SELECT * FROM partners";
+                    $partners = $db->prepare($sql);
+                    $partners->execute();
+                    while($res = $partners->fetch()){ 
+                    $ifotosrc='';
+                    if($res['logo']){
+                        $ifotosrc='img/'.$res['logo'];
+                    } 
+                    ?>
+                    <div class="slide"><img src="<?= $ifotosrc ?>"></div>
+                <?php } ?>
             </section>
           </div>
           <div class="col-lg-1"></div>
@@ -196,6 +208,8 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script> -->
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 

@@ -93,7 +93,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Publications</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="#" class="dropdown-item">News</a>
+                                    <a href="newsDetails.php" class="dropdown-item">News</a>
                                     <a href="photoGallery.php" class="dropdown-item">Photo Gallery</a>
                                     <a href="#" class="dropdown-item">Video Gallery</a>
                                 </div>

@@ -1,3 +1,8 @@
+<?php 
+include("config/db.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -221,6 +226,12 @@
 
 
     <!-- Team Start -->
+        <?php 
+            $sql = "SELECT * FROM team WHERE firstname!= ''";
+            $team = $db->prepare($sql);
+            $team->execute();
+            if($team->rowcount()> 0){
+        ?>
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-5">
@@ -295,10 +306,17 @@
             </div>
         </div>
     </div>
+    <?php } ?>
     <!-- Team End -->
 
 
     <!-- Testimonial Start -->
+        <?php 
+            $sql = "SELECT * FROM testimonial WHERE memberName!= ''  order by testimonialid desc limit 3";
+            $testimony = $db->prepare($sql);
+            $testimony->execute();
+            if($testimony->rowcount()> 0){
+        ?>
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="text-center mb-5">
@@ -334,47 +352,52 @@
             </div>
         </div>
     </div>
+    <?php } ?>
     <!-- Testimonial End -->
 
 
     <!-- Blog Start -->
+        <?php 
+            $sql = "SELECT * FROM news WHERE title!= '' order by newsid desc limit 3";
+            $news = $db->prepare($sql);
+            $news->execute();
+            if($news->rowcount()> 0){
+        ?>
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-5">
                 <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">News</h5>
                 <h1>Latest News</h1>
             </div>
-            <div class="row pb-3">
+            <div class="row pb-3"><?php
+                        while($res = $news->fetch()){ 
+                          // convert date
+                            $newsdate = strtotime($res['newsdate']);
+                            $finalDate = date('M d, Y',$newsdate);
+                          $ifotosrc='';
+                          if($res['photo']){
+                            $ifotosrc='img/'.$res['photo'];
+                          } elseif ($res['url']) {
+                            $ifotosrc=$res['url'];
+                          }else {
+                            $ifotosrc='img/avatar-news.png';
+                          }
+                        ?>
                 <div class="col-lg-4 mb-4">
-                    <div class="blog-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="img/profile.png" alt="">
-                        <a class="blog-overlay text-decoration-none" href="">
-                            <h5 class="text-white mb-3">TICO News</h5>
-                            <p class="text-primary m-0">Jan 01, 2050</p>
+                    <div style="height:300px;" class="blog-item position-relative overflow-hidden rounded mb-2">
+                        <img style="height:100%;" class="img-fluid" src="<?= $ifotosrc?>" alt="">
+                        <a class="blog-overlay text-decoration-none" href="newsDetails.php">
+                            <h5 class="text-white mb-3"><?= $res['title']?></h5>
+                            <p class="text-primary m-0"><?= $finalDate ?> </p>
+                            <button href='button' data-id='<?= $res['newsid'] ?>' class='btn edit btn-pill btn-outline-primary btn-sm'>Read More</button>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="blog-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="img/profile.png" alt="">
-                        <a class="blog-overlay text-decoration-none" href="">
-                            <h5 class="text-white mb-3">TICO News</h5>
-                            <p class="text-primary m-0">Jan 01, 2050</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="blog-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="img/profile.png" alt="">
-                        <a class="blog-overlay text-decoration-none" href="">
-                            <h5 class="text-white mb-3">TICO News</h5>
-                            <p class="text-primary m-0">Jan 01, 2050</p>
-                        </a>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
+    <?php } ?>
     <!-- Blog End -->
 
 <!-- Partners Area -->
@@ -385,11 +408,19 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <section class="customer-logos slider">
-                <div class="slide"><img src="img/logo_2.jpg"></div>
-                <div class="slide"><img src="img/logo_3.png"></div>
-                <div class="slide"><img src="img/logo_4.png"></div>
-                <div class="slide"><img src="img/logo_5.png"></div>
-                <div class="slide"><img src="img/logo_6.png"></div>
+                    <?php 
+                            $sql = "SELECT * FROM partners";
+                            $partners = $db->prepare($sql);
+                            $partners->execute();
+                            while($res = $partners->fetch()){ 
+                            $ifotosrc='';
+                            if($res['logo']){
+                                $ifotosrc='img/'.$res['logo'];
+                            } 
+                            ?>
+                        <div class="slide"><img src="<?= $ifotosrc ?>"></div>
+                    <?php } ?>
+                
                 </section>
             </div>
             <div class="col-md-1"></div>

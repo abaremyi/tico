@@ -15,7 +15,7 @@ include("config/db.php");
 
 
     <!-- Header Start -->
-    <div class="container-fluid page-header" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/Gallely-1.jpg) no-repeat center center; background-size:cover">
+    <div class="container-fluid page-header" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://img.freepik.com/free-vector/gradient-background-wave-minimalist-style-design_483537-3860.jpg?w=826&t=st=1684611536~exp=1684612136~hmac=5f53639d4512cf0dbc9562d2d5d540980f65710a7920802969050f90867d0f6a) no-repeat center center; background-size:cover">
         <div class="container">
             <div class="d-flex flex-column text-center justify-content-center" style="min-height: 300px">
                 <h3 class="display-4 text-white text-uppercase">Applications</h3>
@@ -34,7 +34,7 @@ include("config/db.php");
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-5">
-                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">TICO Application Opportunities</h5>
+                <h4 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">TICO Call up Application</h4>
                 <!-- <h1>Meet Our Teachers</h1> -->
             </div>
             <div class="row">

@@ -18,4 +18,3 @@ catch(PDOException $e)
 session_start();
 
 ?>
-<!-- <script>console.log('Connecteddd successfully');</script> -->

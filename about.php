@@ -10,7 +10,7 @@
 
 
     <!-- Header Start -->
-    <div class="container-fluid page-header" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/aboutWelcome.jpg), no-repeat center center!important;">
+    <div class="container-fluid page-header" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://img.freepik.com/free-vector/gradient-background-wave-minimalist-style-design_483537-3860.jpg?w=826&t=st=1684611536~exp=1684612136~hmac=5f53639d4512cf0dbc9562d2d5d540980f65710a7920802969050f90867d0f6a), no-repeat center center; background-size:cover">
         <div class="container">
             <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
                 <h3 class="display-4 text-white text-uppercase">About, Mission, and Vision</h3>
