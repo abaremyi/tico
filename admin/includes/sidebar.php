@@ -27,6 +27,9 @@
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
+  <?php 
+  if($_SESSION['category']=='Super_Admin'){ 
+    ?>
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
         aria-expanded="true" aria-controls="collapseTwo">
@@ -37,18 +40,12 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Users:</h6>
             <a class="collapse-item" href="404.php">Accounts</a>
-            <!-- <a class="collapse-item" href="applicants.php">Applicants</a> -->
-        </div>
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Home Page:</h6>
-            <a class="collapse-item" href="404.php">Home Slider</a>
-            <a class="collapse-item" href="404.php">Overview</a>
-            <a class="collapse-item" href="404.php">Solutions</a>
-            <a class="collapse-item" href="404.php">Team</a>
-            <a class="collapse-item" href="404.php">Partners Slider</a>
         </div>
     </div>
   </li>
+  <?php 
+  } 
+    ?>
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
@@ -61,8 +58,12 @@
       data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Site Utilities:</h6>
+          <a class="collapse-item" href="gallery.php">Gallery</a>
+          <a class="collapse-item" href="404.php">Home Slider</a>
           <a class="collapse-item" href="news.php">News</a>
-          <a class="collapse-item" href="404.php">Gallery</a>
+          <a class="collapse-item" href="404.php">Overview</a>
+          <a class="collapse-item" href="404.php">Partners Slider</a>
+          <a class="collapse-item" href="404.php">Team</a>
           <a class="collapse-item" href="404.php">Testimonials</a>
       </div>
     </div>

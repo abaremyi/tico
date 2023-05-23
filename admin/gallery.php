@@ -32,7 +32,7 @@ if($_SESSION['admin']){
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">News Page</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Gallery Management Page</h1>
                         
                     </div>
 										<!-- Content Row -->
@@ -45,7 +45,7 @@ if($_SESSION['admin']){
 															<!-- Card Header - Dropdown -->
 															<div
 																	class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-																	<h6 class="m-0 font-weight-bold text-primary">News Entry</h6>
+																	<h6 class="m-0 font-weight-bold text-primary">Gallery Photo Entry</h6>
 															</div>
 															<!-- Card Body -->
 															<div class="card-body">
@@ -91,99 +91,109 @@ if($_SESSION['admin']){
 																<form id="newsForm"  action="actions/newsManagement.php" method="POST" enctype="multipart/form-data">
 																	<div class="row">
 																		<div class="col-md-12" style="padding:10px 10px; background:white;">
-																			<div class="row">
-																				<div class="col-md-3 border-right">
-																					<div class="d-flex flex-column align-items-center text-center p-3 py-5">
-																						
-																						<!-- <img src="../img/avatar-news.png" style="height:30%;width:30%;" alt="avatar" class="img-circle"> -->
-																						
-																						<div class="control-group profile-content">
-																							<label for="wizard-picture">News Profile Photo&nbsp;<span class="text-danger">*</span> </label>
-																							<div class="picture-container">
-																								<div class="picture">
-																										<img class="picture-src" id="wizardPicturePreview" title=""/>
-																										<input type="file" id="wizard-picture" name="photo" >
-																								</div>
-																								<h6 class="text-dark">Click in dark area to Choose a Photo</h6>
-																							</div>
-																							<p class="help-block text-danger"></p>
-																						</div>
-																						
-																						<br><h4 class="font-weight-bold text-danger">OR</h4>
-																						<div class="row text-center">
-																							<div class="col-md-12">
-																								<label class="labels">Use News Image URL <br> <small class="text-primary">( use web images to save storage)</small> </label>
-																								<textarea name="url" id="url" class="form-control" placeholder="Add News Photo URL"  
-																								rows="5"></textarea>
-																							</div>
-																						</div>
-																					</div>
+																			<div class="row border-bottom">
+																				<div class="col-md-3 ">
+																					
 																				</div>
-																				<div class="col-md-5 border-right">
-																					<div class="p-3 py-5">
+																				<div class="col-md-6">
+																					<div class="p-3">
 																						<div class="row mt-3">
 																							<div class="col-md-12">
-																								<label class="labels">News Title&nbsp;<span class="text-danger">*</span> <small class="text-primary">( Don't exceed 200 words )</small></label>
-																								<input type="text" class="form-control" name="title" id="title" placeholder="Add News Title" required="required" data-validation-required-message="Please add News Title">
-																								<p class="help-block text-danger"></p>
-																							</div>
-																							<div class="col-md-12">
-																								<label class="labels">News date&nbsp;<span class="text-danger">*</span></label>
-																								<input type="date" class="form-control" name="newsdate" id="newsdate" placeholder="Add News Date" required="required" data-validation-required-message="Please Select Date">
-																								<p class="help-block text-danger"></p>
-																							</div>
-																							<div class="col-md-12">
-																								<label class="labels">News Status&nbsp;<span class="text-danger">*</span></label>
-																								<select name="status" id="status" class="form-control" id="status" required="required" data-validation-required-message="Please Select News Status">
-																									<option value="">Choose News Status</option>
-																									<option value="New">New</option>
-																									<option value="Recent">Recent</option>
-																									<option value="Old">Old</option>
+																								<label class="labels">Photo Category&nbsp;<span class="text-danger">*</span></label>
+																								<select name="category" id="categorySelect" class="form-control" required="required" data-validation-required-message="Please Select Photo Category">
+																									<option value="">Choose Photo Category</option>
+																									<option value="Event">Event</option>
+																									<option value="Internship">Internship</option>
+																									<option value="Training">Training</option>
+																									<option value="Workshop">Workshop</option>
 																								</select>
 																								<p class="help-block text-danger"></p>
 																							</div>
-																						</div>
-																						<!-- Additional Form inputs -->
-																						<!-- <div class="row mt-3">
-																							<div class="col-md-6"><label class="labels">Zip Code</label>
-																								<input type="text" class="form-control" name="zip_code" placeholder="zip">
-																							</div>
-																							<div class="col-md-6"><label class="labels">State/Region</label>
-																								<input type="text" class="form-control" name="state" placeholder="state">
-																							</div>
-																							<div class="col-md-12">
-																								<label class="labels">Email ID</label>
-																								<input type="text" class="form-control" placeholder="enter email" name="email">
-																							</div>
-																						</div>
-																						<div class="row mt-2">
-																							<div class="col-md-6">
-																								<label class="labels">Last Name</label>
-																								<input type="text" class="form-control" name="lastname" placeholder="Last Name">
-																							</div>
-																							<div class="col-md-6"><label class="labels">First Name</label>
-																								<input type="text" class="form-control" name="firstname" placeholder="first name">
-																							</div>
-																						</div> -->
-																						
+																						</div>																	
 																				
 																					</div>
 																				</div>
-																				<div class="col-md-4">
-																					<div class="p-3 py-5">
-																						<div class="col-md-12">
-																							<label class="labels">News Details&nbsp;<span class="text-danger">*</span> <small class="text-primary">( Don't exceed 3000 words )</small></label>
-																							<textarea name="details" id="details" class="form-control" placeholder="Add News details" value="" cols="30"
-																								rows="10" required="required" data-validation-required-message="Please Fill this Field"></textarea>
-																								<p class="help-block text-danger"></p>
-																						</div>
-																					</div>
+																				<div class="col-md-3">
 																				</div>
 																			</div>
+                                      <div class="row">
+                                        <div class="col-md-12">
+                                          <style>
+                                            #ddArea {
+                                              height: 200px;
+                                              border: 2px dashed #ccc;
+                                              line-height: 200px;
+                                              text-align: center;
+                                              font-size: 20px;
+                                              background: #f9f9f9;
+                                              margin-bottom: 15px;
+                                            }
+
+                                            .drag_over {
+                                              color: #000;
+                                              border-color: #000;
+                                            }
+
+                                            .thumbnail {
+                                              width: 100px;
+                                              height: 100px;
+                                              padding: 2px;
+                                              margin: 2px;
+                                              border: 2px solid lightgray;
+                                              border-radius: 3px;
+                                              float: left;
+                                            }
+
+                                            .d-none {
+                                              display: none;
+                                            }
+
+                                            .d-block {
+                                              display: block;
+                                            }
+
+                                            /* Absolute Center Spinner */
+                                            .loading {
+                                              position: fixed;
+                                              z-index: 999;
+                                              height: 2em;
+                                              width: 2em;
+                                              overflow: visible;
+                                              margin: auto;
+                                              top: 0;
+                                              left: 0;
+                                              bottom: 0;
+                                              right: 0;
+                                            }
+
+                                            /* Transparent Overlay */
+                                            .loading:before {
+                                              content: "";
+                                              display: block;
+                                              position: fixed;
+                                              top: 0;
+                                              left: 0;
+                                              width: 100%;
+                                              height: 100%;
+                                              background-color: rgba(0, 0, 0, 0.3);
+                                            }
+                                          </style>
+
+                                          <div class="loading d-none"><img src="../img/load.gif" alt="" /></div>
+                                          <div id="ddArea">
+                                            Drag and Drop Files Here or
+                                            <a class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                              Select File(s)
+                                            </a>
+                                          </div>
+                                          <div id="showThumb"></div>
+                                          <input type="file" class="d-none" id="selectfile" multiple />
+                                        </div>
+                                      </div>
 																			<br>
-																				<div class="mt-50 text-center">
+																				<!-- <div class="mt-50 text-center">
 																					<button class="btn btn-primary profile-button" name="publish" id="publish" type="submit">Publish News</button>
-																				</div>
+																				</div> -->
 																				<br>
 																		</div>
 																	</div>
@@ -199,7 +209,7 @@ if($_SESSION['admin']){
 											<!-- DataTabes News -->
 											<div class="card shadow mb-4">
 													<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-															<h6 class="m-0 font-weight-bold text-primary">News Record</h6>
+															<h6 class="m-0 font-weight-bold text-primary">Photo Record</h6>
 																	<div class="dropdown no-arrow">
 																			<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
 																					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -216,80 +226,72 @@ if($_SESSION['admin']){
 																	</div>
 													</div>
 													<div class="card-body">
-															<div class="table-responsive table-sm">
-																	<table class="table table-bordered" id="dataTable"  cellspacing="0">
+															<div class="table-responsive">
+																	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 																			<thead style="text-align: center;">
 																					<tr>
 																							<th>N<sup><u>0</u></sup></th>
 																							<th>Picture</th>
-																							<th>Title</th>
-																							<th>Date</th>
-																							<th>Photo URL</th>
-																							<th style="width:25%">status</th>
+																							<th>Photo name</th>
+																							<th>Category</th>
 																							<th>Actions</th>
 																					</tr>
 																			</thead>
 																			
 																			<tbody>
 																				<?php 
-																					$news = $db->prepare("SELECT * FROM news order by addedDate DESC");
+																					$news = $db->prepare("SELECT * FROM gallery order by gallerid DESC");
 																					$news->execute();
 																					$i = 1;
 																					while($res = $news->fetch(PDO::FETCH_ASSOC)): 
 																						if (!empty($res['photo'])) {
 																							$image = '../img/'.$res['photo'];
-																						} else if(!empty($res['url']))  {
-																							$image = $res['url'];
 																						}else {
-																							$image = '../img/avatar-news.png';
+																							$image = '../img/avatar-gallery.png';
 																						}
 																						
 																						// $image = (!empty($res['photo'])) ? '../img/'.$res['photo'] : '../img/avatar-news.png';
 																						// convert date
-																						$newsdate = strtotime($res['newsdate']);
-																						$finalDate = date('M d, Y',$newsdate);
+																						// $newsdate = strtotime($res['newsdate']);
+																						// $finalDate = date('M d, Y',$newsdate);
 																						
 																				?>
 																						
 																						<tr>
-																								<td style="width:5%"><?= $i ?></td>
-																								<td style="width:20%">
-																									<img class="rounded-circle img-responsive mt-2" src='<?= $image ?>' height='40px' width='40px'>
+																								<td style="width:15%;text-align:center;"><?= $i ?></td>
+																								<td style="width:30%">
+																									<img class="rounded-circle img-responsive mt-2" src='<?= $image ?>' height='60px' width='60px'>
 																									<div class="btn-group btn-group-sm mt-2">
-																										<button class="btn photo btn-pill btn-outline-primary btn-sm" type='button' data-id="<?=$res['newsid']?>"><i class="fas fa-upload"></i></button>
+																										<button class="btn photo btn-pill btn-outline-primary btn-sm" type='button' data-id="<?=$res['gallerid']?>"><i class="fas fa-upload"></i></button>
 																									</div>
 																								</td>
-																								<td style="width:30%"> <small> <?= $res['title'] ?></small></td>
-																								<td style="width:15%"><small><?= $finalDate ?></small></td>
-																								<td style="width:10%">
-																									<?php if ($res['url']) {
-																									?>
-																										<button type="button" class="btn btn-pill btn-outline-info btn-sm" data-toggle="popover" title="<?= $res['title'] ?>" data-content="<?= $res['url'] ?>">Click me</button>
-																									<?php } ?>
-																								</td>
+																								<td style="width:30%"> <small> <?= $res['photo'] ?></small></td>
 																							
 																								<td style="text-align:center;" class="">
 																									<?php
-																										if($res['status'] == 'Recent'){?>
-																											<a class='btn btn-sm btn-primary' href="#">
-																												Recent
+																										if($res['category'] == 'Event'){?>
+																											<a class='badge badge-pill badge-primary' href="#">
+																												Event
 																											</a>
-																										<?php }else if ($res['status'] == 'New'){ ?>
-																											<a class='btn btn-sm btn-success' href="#">
-																												New
+																										<?php }else if ($res['category'] == 'Internship'){ ?>
+																											<a class='badge badge-pill badge-success' href="#">
+																												Internship
 																											</a>
-																										<?php }else if ($res['status'] == 'Old'){ ?>
-																											<a class='btn btn-sm btn-danger' href="#">
-																												Old
+																										<?php }else if ($res['category'] == 'Training'){ ?>
+																											<a class='badge badge-pill badge-danger' href="#">
+																												Training
+																											</a>
+																										<?php }else if ($res['category'] == 'Workshop'){ ?>
+																											<a class='badge badge-pill badge-dark' href="#">
+																												Workshop
 																											</a>
 																											<?php	 } ?>
 
 																								</td>
 																								<td class='table-action' style='width:10%'>
 																									<div class='btn-group btn-group-sm mb-4' role='group' aria-label='Small button group'>
-																										<button type='button' data-id='<?= $res['newsid'] ?>' class='btn view btn-pill btn-outline-primary btn-sm'><i class='fas fa-envelope-open'></i></button>
-																										<button type='button' data-id='<?= $res['newsid'] ?>' class='btn edit btn-pill btn-outline-success btn-sm'><i class='fas fa-edit'></i></button>
-																										<button type='button' data-id='<?= $res['newsid'] ?>' class='btn delete btn-pill btn-outline-danger btn-sm'><i class='fas fa-trash'></i></button>
+																										<button type='button' data-id='<?= $res['gallerid'] ?>' class='btn view btn-pill btn-outline-primary btn-sm'><i class='fa fa-book-open'></i></button>
+																										<button type='button' data-id='<?= $res['gallerid'] ?>' class='btn delete btn-pill btn-outline-danger btn-sm'><i class='fas fa-trash'></i></button>
 																									</div>
 																								</td>
 																							</tr>
@@ -302,7 +304,7 @@ if($_SESSION['admin']){
 											</div>
 											<!-- End DataTabes News -->
 											<!-- Include Modals Here -->
-											<?php include('modals/newsModals.php'); ?>
+											<?php include('modals/galleryModals.php'); ?>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -360,12 +362,12 @@ if($_SESSION['admin']){
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-		<!-- Page level plugins -->
-		<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-		<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-		<!-- Page level custom scripts -->
-		<script src="js/demo/datatables-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
@@ -378,7 +380,7 @@ if($_SESSION['admin']){
 							e.preventDefault();
 							$('#viewModal').modal('show');
 							var id = $(this).data('id');
-							console.log('id yabonetse '+id);
+							// console.log('id yabonetse '+id);
 							getRow(id);
               // getPicRow(id);
 					});
@@ -415,11 +417,11 @@ if($_SESSION['admin']){
           function getPicRow(id){
           $.ajax({
               type: 'POST',
-              url: 'controller/newsRow.php',
+              url: 'controller/galleryRow.php',
               data: {id:id},
               dataType: 'json',
               success: function(response){
-              $('#pictureNews').val(response.newsid);
+              $('#pictureId').val(response.gallerid);
               $('.profileBg').css({
                 'height'                : '180px',
                 'margin-bottom'         : '30px',
@@ -434,7 +436,7 @@ if($_SESSION['admin']){
                 'filter'                : 'blur(10px)',
                 'min-width'             : '90%'
               });
-              $('#newsTitle').val(response.title);
+              $('#photoName').val(response.photo);
               }
           });
           }
@@ -443,25 +445,25 @@ if($_SESSION['admin']){
 							console.log('function irashaka '+id);
           $.ajax({
               type: 'POST',
-              url: 'controller/newsRow.php',
+              url: 'controller/galleryRow.php',
               data: { id:id },
               dataType: 'json',
 							// dataType: 'text', 
 							cache: false,
               success: function(response){
-							// console.log('title yabonetse '+response);
-              $('#viewTitle').html(response.title);
-              $('#viewDetails').html(response.details);
-              $('#viewDate').html(response.newsdate);
+              $('#viewName').html(response.photo);
+              $('#viewDate').html(response.addedDate);
 							let cssClass ='';
-              if (response.status == 'New') {
+              if (response.category == 'Event') {
+								cssClass ='text-primary';
+							} else if(response.category == 'Internship') {
 								cssClass ='text-success';
-							} else if(response.status == 'Recent') {
-								cssClass ='text-info';
-							} else if(response.status == 'Old') {
+							} else if(response.category == 'Training') {
 								cssClass ='text-danger';
+							}else if(response.category == 'Workshop') {
+								cssClass ='text-dark';
 							}
-              $('#viewStatus').html(response.status).attr("class",cssClass);
+              $('#viewCategory').html(response.category).attr("class",cssClass);
 							$('#photoContainer').css({
                 'height'                : '200px',
                 'min-width'             : '100px',
@@ -469,24 +471,14 @@ if($_SESSION['admin']){
 								'align-items'						:  'center',
                 'justify-content'       : 'center'
               });
-							newsPhoto ='';
+							iphoto ='';
 							if (response.photo) {
-								newsPhoto = '../img/'+response.photo;
-							} else if (response.url) {
-								newsPhoto = response.url;
-								console.log('Ifoto ni',newsPhoto);
+								iphoto = '../img/'+response.photo;
+							} else {
+								iphoto = '../img/avatar-gallery.png';
 							}
-							<?php
-								if (!empty($res['photo'])) {
-									$image = '../img/'.$res['photo'];
-								} else if(!empty($res['url']))  {
-									$image = $res['url'];
-								}else {
-									$image = '../img/avatar-news.png';
-								}
-							?> 
 							
-              $('#viewPhoto').attr("src",newsPhoto).css({
+              $('#viewPhoto').attr("src",iphoto).css({
                 'height'                : '80%',
                 'box-shadow'         		: '0 .15rem 1.75rem 0 rgba(58,59,69,.15)',
                 'border-radius'      		: '5px',
@@ -498,8 +490,8 @@ if($_SESSION['admin']){
               $('#editStatus').val(response.status);
               $('#editUrl').html(response.url);
               $('#editDetails').html(response.details);
-              $('#deleteNewsid').val(response.newsid);
-              $('#deleteNewsTitle').html(response.title);
+              $('#deleteGallerid').val(response.gallerid);
+              $('#deletePhotoName').html(response.photo);
               // $('#deleteContent').val(response.content);
               // $('#deleteReminder').val(response.reminder);
               // $('.pictureNames').html(response.firstname+' '+response.lastname);
@@ -555,6 +547,91 @@ if($_SESSION['admin']){
 				$('[data-toggle="popover"]').popover()
 			})
 		</script>
+    <!-- Hide or Show Photo Drop or Select area if select option is empty -->
+    <script>
+      $(function () {
+        $('#ddArea').hide();
+        $('#categorySelect').change(function(){
+          if ($('#categorySelect').val() == 'Event' 
+          || $('#categorySelect').val() == 'Internship'
+          || $('#categorySelect').val() == 'Training'
+          || $('#categorySelect').val() == 'Workshop') {
+            $('#ddArea').show();
+          } else {
+            $('#ddArea').hide();
+          }
+        });
+      });
+    </script>
+    <!-- End Hide or Show Photo Drop or Select area if select option is empty -->
+    <!-- Upload multiple Photos at once -->
+    <script>
+      $(document).ready(function() {
+        $("#ddArea").on("dragover", function() {
+          $(this).addClass("drag_over");
+          return false;
+        });
+
+        $("#ddArea").on("dragleave", function() {
+          $(this).removeClass("drag_over");
+          return false;
+        });
+
+        $("#ddArea").on("click", function(e) {
+          file_explorer();
+        });
+
+        $("#ddArea").on("drop", function(e) {
+          e.preventDefault();
+          $(this).removeClass("drag_over");
+          var category = $("select#categorySelect").val();
+          var formData = new FormData();
+          var files = e.originalEvent.dataTransfer.files;
+          formData.append("category", category);
+          for (var i = 0; i < files.length; i++) {
+            formData.append("file[]", files[i]);
+          }
+          uploadFormData(formData);
+        });
+
+        function file_explorer() {
+          document.getElementById("selectfile").click();
+          document.getElementById("selectfile").onchange = function() {
+            files = document.getElementById("selectfile").files;
+            var category = $("select#categorySelect").val();
+            var formData = new FormData();
+            formData.append("category", category);
+
+            for (var i = 0; i < files.length; i++) {
+              formData.append("file[]", files[i]);
+            }
+            uploadFormData(formData);
+          };
+        }
+
+        function uploadFormData(form_data) {
+          $(".loading")
+            .removeClass("d-none")
+            .addClass("d-block");
+          $.ajax({
+            url: "actions/galleryManagement.php",
+            method: "POST",
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+              $(".loading")
+                .removeClass("d-block")
+                .addClass("d-none");
+              // $("#showThumb").append(data);
+                window.location.reload();
+            }
+          });
+        }
+      });
+    </script>
+    <!-- End Upload multiple Photos at once -->
 
 </body>
 

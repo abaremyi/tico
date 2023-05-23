@@ -7,12 +7,14 @@ include("config/db.php");
   if(isset($_POST['login'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $status = 'Activated';
         //Query to check username in admin table
-    $sqlQuery = "SELECT * FROM admin WHERE username = :username";
+    $sqlQuery = "SELECT * FROM admin WHERE username = :username and status=:status";
     $statement = $db->prepare($sqlQuery);
     $statement->execute(
       array(
-        ':username' => $username
+        ':username' => $username,
+        ':status' => $status
         )
       );
         $res=$statement->fetch(PDO::FETCH_ASSOC);
@@ -21,7 +23,8 @@ include("config/db.php");
       if($statement->rowCount() > 0){
         if($password == $res['password']){
           $_SESSION['admin']=$username;
-          header("location: admin/");
+          $_SESSION['category']=$res['category'];
+          header("location: admin/index.php");
         }else{
           // echo "<script>alert('')</script>";
           $alert_class = "class='alert alert-danger alert-dismissable alert-sm'";
@@ -31,7 +34,7 @@ include("config/db.php");
         else{
         // echo "<script>alert('Username not found')</script>";
         $alert_class = "class='alert alert-warning alert-dismissable alert-sm'";
-      $result = "<small>Invalid Username</small>";
+      $result = "<small>Invalid Username or The Account is Deactivated</small>";
       }
     }
         
@@ -90,7 +93,7 @@ include("config/db.php");
                         } 
                       ?>
                     </div>
-                    <form class="user" method="post">
+                    <form class="user" method="post" action="login.php">
                         <div class="form-group">
                           <input type="text" name="username" class="form-control form-control-user"
                               id="username" aria-describedby="UsernameHelp"
